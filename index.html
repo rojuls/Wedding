@@ -130,16 +130,24 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
   width: 100%;
   height: 100vh;
   z-index: 9999;
-  background: #000; /* samain sama background cover kamu */
-  transition: transform 1s ease, opacity 1s ease;
+  
+  /* BACKGROUND DARI WALIMATUL */
+  background-image: url('https://walimatul.id/wp-content/uploads/2026/04/Garden-Series-16-1.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #000;
+  
+  /* BIAR KONTEN TENGAH */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
 }
-#cover.hide {
-  transform: translateY(-100%);
-  opacity: 0;
-  pointer-events: none;
-}
-body.lock-scroll {
-  overflow: hidden;
+
+body {
+  overflow: hidden; /* kunci scroll pas awal */
 }
 /*# sourceURL=elementor-pro-custom-fonts-inline-css */
 </style>
@@ -287,7 +295,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 			<main class="elementor-element elementor-element-2f1c645 e-con-full e-flex e-con e-parent" data-id="2f1c645" data-element_type="container" data-e-type="container">
 		<div class="elementor-element elementor-element-573ad333 e-con-full e-flex e-con e-child" data-id="573ad333" data-element_type="container" data-e-type="container">
 		<section class="elementor-element elementor-element-5a2ea1c0 e-con-full elementor-hidden-mobile elementor-hidden-tablet e-flex e-con e-child" data-id="5a2ea1c0" data-element_type="container" data-e-type="container">
-<article class="elementor-element elementor-element-5e3817f7 e-con-full e-flex e-con e-child" id="cover" data-id="5e3817f7" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+<article class="elementor-element elementor-element-5e3817f7 e-con-full e-flex e-con e-child" data-id="5e3817f7" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 		<div class="elementor-element elementor-element-56aa3fb3 e-con-full e-flex e-con e-child" data-id="56aa3fb3" data-element_type="container" data-e-type="container">
 		<div class="elementor-element elementor-element-2cff9429 e-con-full e-flex e-con e-child" data-id="2cff9429" data-element_type="container" data-e-type="container">
 				<div class="elementor-element elementor-element-2bd84de3 elementor-widget elementor-widget-heading" data-id="2bd84de3" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
