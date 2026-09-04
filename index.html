@@ -123,6 +123,24 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 		url('https://walimatul.id/wp-content/uploads/2025/07/4793Bahagia.woff') format('woff');
 }
 
+#cover {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 9999;
+  background: #000; /* samain sama background cover kamu */
+  transition: transform 1s ease, opacity 1s ease;
+}
+#cover.hide {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+body.lock-scroll {
+  overflow: hidden;
+}
 /*# sourceURL=elementor-pro-custom-fonts-inline-css */
 </style>
 <style id="jet-form-builder-honeypot-inline-css">
@@ -269,7 +287,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 			<main class="elementor-element elementor-element-2f1c645 e-con-full e-flex e-con e-parent" data-id="2f1c645" data-element_type="container" data-e-type="container">
 		<div class="elementor-element elementor-element-573ad333 e-con-full e-flex e-con e-child" data-id="573ad333" data-element_type="container" data-e-type="container">
 		<section class="elementor-element elementor-element-5a2ea1c0 e-con-full elementor-hidden-mobile elementor-hidden-tablet e-flex e-con e-child" data-id="5a2ea1c0" data-element_type="container" data-e-type="container">
-		<article class="elementor-element elementor-element-7448ac9 e-con-full e-flex e-con e-child" data-id="7448ac9" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;position&quot;:&quot;fixed&quot;}">
+<article class="elementor-element elementor-element-5e3817f7 e-con-full e-flex e-con e-child" id="cover" data-id="5e3817f7" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 		<div class="elementor-element elementor-element-56aa3fb3 e-con-full e-flex e-con e-child" data-id="56aa3fb3" data-element_type="container" data-e-type="container">
 		<div class="elementor-element elementor-element-2cff9429 e-con-full e-flex e-con e-child" data-id="2cff9429" data-element_type="container" data-e-type="container">
 				<div class="elementor-element elementor-element-2bd84de3 elementor-widget elementor-widget-heading" data-id="2bd84de3" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
@@ -318,7 +336,7 @@ var WdsAudio = {"source":"url","audio_link":"https:\/\/walimatul.id\/wp-content\
 
 							</div>
 				</div>
-		<article class="elementor-element elementor-element-5e3817f7 e-con-full e-flex e-con e-child" data-id="5e3817f7" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+		<article class="elementor-element elementor-element-5e3817f7 e-con-full e-flex e-con e-child" id="cover" data-id="5e3817f7" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 		<div class="elementor-element elementor-element-2be519c4 e-con-full e-flex e-con e-child" data-id="2be519c4" data-element_type="container" data-e-type="container">
 				<div class="elementor-element elementor-element-e21dc1e elementor-widget elementor-widget-heading" data-id="e21dc1e" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
 					<h2 class="elementor-heading-title elementor-size-default">The Wedding Of</h2>				</div>
@@ -331,7 +349,7 @@ var WdsAudio = {"source":"url","audio_link":"https:\/\/walimatul.id\/wp-content\
 					<h2 class="elementor-heading-title elementor-size-default">Tamu Undangan</h2>				</div>
 				</div>
 				<div class="elementor-element elementor-element-17f24082 elementor-align-center elementor-widget elementor-widget-button" data-id="17f24082" data-element_type="widget" data-e-type="widget" id="openBtn" data-widget_type="button.default">
-										<a class="elementor-button elementor-button-link elementor-size-sm" href="#open">
+										<a class="elementor-button elementor-button-link elementor-size-sm" href="#open" onclick="bukaUndangan()">
 						<span class="elementor-button-content-wrapper">
 						<span class="elementor-button-icon">
 				<svg aria-hidden="true" class="e-font-icon-svg e-far-envelope" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"></path></svg>			</span>
@@ -1217,6 +1235,18 @@ var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/walimatul.id\/wp-admin\/a
 /*! This file is auto-generated */
 var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof HTMLScriptElement))throw new Error("Element missing: "+e);const r=JSON.parse(t.text),s=(window._wpemojiSettings=r,"wpEmojiSettingsSupports"),o=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(s,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const r=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===r[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,r){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!r(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,r){let a;const s=(a="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),o=(s.textBaseline="top",s.font="600 32px Arial",{});return e.forEach(e=>{o[e]=t(s,e,n,r)}),o}function a(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}r.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(s));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(o),u.toString(),c.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"});const a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=e=>{i(n=e.data),a.terminate(),t(n)})}catch(e){}i(n=f(o,u,c,p))}t(n)}).then(e=>{for(const n in e)r.supports[n]=e[n],r.supports.everything=r.supports.everything&&r.supports[n],"flag"!==n&&(r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&r.supports[n]);var t;r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&!r.supports.flag,r.supports.everything||((t=r.source||{}).concatemoji?a(t.concatemoji):t.wpemoji&&t.twemoji&&(a(t.twemoji),a(t.wpemoji)))});
 //# sourceURL=https://walimatul.id/wp-includes/js/wp-emoji-loader.min.js
+</script>
+<script>
+// kunci scroll pas awal
+document.body.classList.add('lock-scroll');
+
+function bukaUndangan() {
+  document.getElementById('cover').classList.add('hide');
+  document.body.classList.remove('lock-scroll');
+  
+  // scroll ke section #open
+  document.querySelector('#open').scrollIntoView({behavior: 'smooth'});
+}
 </script>
 	</body>
 </html>
