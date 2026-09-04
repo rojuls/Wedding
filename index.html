@@ -889,45 +889,60 @@ const list = document.getElementById('wishesList')
 const notif = document.getElementById('notif')
 const jumlah = document.getElementById('jumlahUcapan')
 
-// LOAD UCAPAN
-fetch(scriptURL)
-  .then(res => res.json())
-  .then(data => {
-    jumlah.innerText = data.length + ' Ucapan'
-    data.reverse().forEach(item => {
-      if(item.nama) {
-        let inisial = item.nama.substring(0,2).toUpperCase()
-        list.innerHTML += `
-          <div class="wishes-box" style="margin-top:10px; padding:0 20px;">
-            <div class="wish-card">
-              <div class="wish-avatar">${inisial}</div>
-              <div class="wish-content">
-                <div class="wish-name">${item.nama} <span>❌</span></div>
-                <div class="wish-text">${item.ucapan}</div>
-                <small style="color:#999;">${item.kehadiran} - ${item.waktu}</small>
+function loadUcapan() {
+  fetch(scriptURL)
+    .then(res => res.json())
+    .then(data => {
+      list.innerHTML = ''
+      jumlah.innerText = data.length + ' Ucapan'
+      data.reverse().forEach(item => {
+        if(item.nama) {
+          let inisial = item.nama.substring(0,2).toUpperCase()
+          let icon = item.kehadiran === 'Hadir' ? '✅' : '❌' // INI BARU
+          list.innerHTML += `
+            <div class="wishes-box" style="margin-top:10px; padding:0 20px;">
+              <div class="wish-card">
+                <div class="wish-avatar">${inisial}</div>
+                <div class="wish-content">
+                  <div class="wish-name">${item.nama} <span style="font-size:14px;">${icon}</span></div>
+                  <div class="wish-text">${item.ucapan}</div>
+                  <small style="color:#999;">${item.kehadiran} - ${item.waktu}</small>
+                </div>
               </div>
             </div>
-          </div>
-        `
-      }
+          `
+        }
+      })
     })
-  })
+}
+loadUcapan()
 
-// KIRIM UCAPAN
 form.addEventListener('submit', e => {
   e.preventDefault()
   notif.innerText = "Mengirim..."
-  let formData = new FormData(form)
-  formData.append('waktu', new Date().toLocaleString('id-ID'))
+  
+  let data = {
+    data: {
+      waktu: new Date().toLocaleString('id-ID'),
+      nama: form.nama.value,
+      kehadiran: form.kehadiran.value,
+      ucapan: form.ucapan.value
+    }
+  }
 
-  fetch(scriptURL, { method: 'POST', body: formData })
-    .then(res => res.json())
-    .then(() => {
-      notif.innerText = "Ucapan terkirim!"
-      form.reset()
-      setTimeout(() => location.reload(), 1200)
-    })
-    .catch(() => notif.innerText = "Gagal mengirim")
+  fetch(scriptURL, { 
+    method: 'POST', 
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(() => {
+    notif.innerText = "Ucapan terkirim!"
+    form.reset()
+    loadUcapan() // GA RELOAD HALAMAN
+    setTimeout(() => notif.innerText = "", 2000)
+  })
+  .catch(() => notif.innerText = "Gagal mengirim")
 })
 </script>
 
