@@ -988,11 +988,13 @@ form.addEventListener('submit', e => {
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init();
     history.scrollRestoration = "manual";
     window.addEventListener("beforeunload", function () {
-        window.scrollTop(0);
+        $(window).scrollTop(0); // <-- ini yg dibenerin
     });
 
     $(document).on('click', 'a[href="#open"]', function (event) {
@@ -1017,31 +1019,36 @@ form.addEventListener('submit', e => {
         playAudio();
         document.body.style.position = "inherit";
         document.getElementById("audioBtn").style.cssText = "visibility:visible; transform:translateY(0)";
+        
+        // TAMBAHIN INI: tembak lagi pas tombol "Buka Undangan" di klik
+        setTimeout(gantiNamaTamu, 200);
     });
-</script>
-<script>
-function gantiNamaTamu(){
-  const params = new URLSearchParams(window.location.search)
-  let nama = params.get('to') 
-  
-  if(nama) {
-    nama = nama.replace(/\+/g, ' ') 
-    nama = nama.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-    
-    let elNama = document.querySelector('.elementor-heading-title')
-    if(elNama && elNama.innerText.includes('Tamu Undangan')) {
-      elNama.innerText = `Kepada Yth. Bapak/Ibu ${nama}`
-      console.log('Berhasil ganti ke:', nama) // buat cek di F12
+
+    // ========== INI FUNGSI BARU BUAT GANTI NAMA ==========
+    function gantiNamaTamu(){
+      const params = new URLSearchParams(window.location.search)
+      let nama = params.get('to') 
+      
+      if(nama) {
+        nama = nama.replace(/\+/g, ' ') 
+        nama = nama.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+        
+        // Tembak semua heading, jangan cuma 1
+        document.querySelectorAll('.elementor-heading-title').forEach(el => {
+          if(el.innerText.includes('Tamu Undangan')) {
+            el.innerText = `Kepada Yth. Bapak/Ibu ${nama}`
+            console.log('Berhasil ganti ke:', nama) 
+          }
+        })
+      }
     }
-  }
-}
 
-// tembak 3x biar kena
-document.addEventListener('DOMContentLoaded', gantiNamaTamu);
-window.addEventListener('load', gantiNamaTamu);
-setTimeout(gantiNamaTamu, 1000); 
+    // tembak 4x biar pasti kena
+    $(document).ready(gantiNamaTamu);
+    $(window).on('load', gantiNamaTamu);
+    setTimeout(gantiNamaTamu, 800); 
+    setTimeout(gantiNamaTamu, 2000);
 </script>
-
 				</div>
 				</div>
 				</section>
