@@ -1019,7 +1019,28 @@ form.addEventListener('submit', e => {
         document.getElementById("audioBtn").style.cssText = "visibility:visible; transform:translateY(0)";
     });
 </script>
+<script>
+function gantiNamaTamu(){
+  const params = new URLSearchParams(window.location.search)
+  let nama = params.get('to') 
+  
+  if(nama) {
+    nama = nama.replace(/\+/g, ' ') 
+    nama = nama.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    
+    let elNama = document.querySelector('.elementor-heading-title')
+    if(elNama && elNama.innerText.includes('Tamu Undangan')) {
+      elNama.innerText = `Kepada Yth. Bapak/Ibu ${nama}`
+      console.log('Berhasil ganti ke:', nama) // buat cek di F12
+    }
+  }
+}
 
+// tembak 3x biar kena
+document.addEventListener('DOMContentLoaded', gantiNamaTamu);
+window.addEventListener('load', gantiNamaTamu);
+setTimeout(gantiNamaTamu, 1000); 
+</script>
 
 				</div>
 				</div>
@@ -1132,25 +1153,7 @@ document.addEventListener("click", function(e) {
 					} );
 				} )();
 			</script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  setTimeout(function(){ 
-    const params = new URLSearchParams(window.location.search)
-    let nama = params.get('to') 
-    
-    if(nama) {
-      nama = nama.replace(/\+/g, ' ') 
-      nama = nama.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-      
-      // INI BAGIAN NEMBAKNYA
-      let elNama = document.querySelector('.elementor-heading-title')
-      if(elNama) {
-        elNama.innerText = `Kepada Yth. Bapak/Ibu ${nama}`
-      }
-    }
-  }, 300)
-})
-</script>
+
 			<script id="saic_library-js" src="https://walimatul.id/wp-content/plugins/weddingsaas-pro/assets/plugins/custom/commentpress/saic_lib.js?ver=2.10.3"></script>
 <script id="wds_rsvp-js-extra">
 var WDS_RSVP = {"ajaxurl":"https://walimatul.id/wp-admin/admin-ajax.php","nonce":"041754b6da","jPagesNum":"5","textCounterNum":"300","thanksComment":"Terima kasih atas ucapan Anda!","duplicateComment":"Anda mungkin membiarkan salah satu kolom kosong, atau menggandakan komentar.","guestMax":"10","textNavNext":"Next","textNavPrev":"Previous"};
