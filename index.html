@@ -456,7 +456,7 @@ var WdsAudio = {"source":"url","audio_link":"https:\/\/walimatul.id\/wp-content\
 				<div class="elementor-element elementor-element-76954d29 elementor-widget elementor-widget-heading" data-id="76954d29" data-element_type="widget" data-e-type="widget" data-aos="zoom-in-up" data-aos-anchor-placement="center" data-aos-duration="1000" data-widget_type="heading.default">
 					<h2 class="elementor-heading-title elementor-size-default">Save the Date</h2>				</div>
 				<div class="elementor-element elementor-element-7df7b15b elementor-countdown--label-block elementor-widget elementor-widget-countdown" data-id="7df7b15b" data-element_type="widget" data-e-type="widget" data-aos="zoom-in-up" data-aos-anchor-placement="center" data-aos-duration="1000" data-widget_type="countdown.default">
-							<div class="elementor-countdown-wrapper" data-date="1788401906">
+							<div class="elementor-countdown-wrapper" data-date="1793504400">
 			<div class="elementor-countdown-item"><span class="elementor-countdown-digits elementor-countdown-days"></span> <span class="elementor-countdown-label">Hari</span></div><div class="elementor-countdown-item"><span class="elementor-countdown-digits elementor-countdown-hours"></span> <span class="elementor-countdown-label">Jam</span></div><div class="elementor-countdown-item"><span class="elementor-countdown-digits elementor-countdown-minutes"></span> <span class="elementor-countdown-label">Menit</span></div><div class="elementor-countdown-item"><span class="elementor-countdown-digits elementor-countdown-seconds"></span> <span class="elementor-countdown-label">Detik</span></div>		</div>
 						</div>
 				<div class="elementor-element elementor-element-b19585d elementor-widget elementor-widget-text-editor" data-id="b19585d" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
@@ -783,99 +783,116 @@ var WdsAudio = {"source":"url","audio_link":"https:\/\/walimatul.id\/wp-content\
 								</div>
 				</div>
 				</div>
-				</article>
-		<article class="elementor-element elementor-element-53554d58 e-con-full e-flex e-con e-child" data-id="53554d58" data-element_type="container" data-e-type="container">
-		<div class="elementor-element elementor-element-1e27ab20 e-con-full e-flex e-con e-child" data-id="1e27ab20" data-element_type="container" data-e-type="container">
-				<div class="elementor-element elementor-element-2e9c8fc5 elementor-widget elementor-widget-heading" data-id="2e9c8fc5" data-element_type="widget" data-e-type="widget" data-aos="zoom-in-up" data-aos-anchor-placement="center" data-aos-duration="1000" data-widget_type="heading.default">
-					<h2 class="elementor-heading-title elementor-size-default">Wishes</h2>				</div>
-				<div class="elementor-element elementor-element-3bd41e3 elementor-widget elementor-widget-heading" data-id="3bd41e3" data-element_type="widget" data-e-type="widget" data-aos="zoom-in-up" data-aos-anchor-placement="center" data-aos-duration="1000" data-widget_type="heading.default">
-					<p class="elementor-heading-title elementor-size-default">Ucapan Selamat & Do'a</p>				</div>
-				<div class="elementor-element elementor-element-dd777dd elementor-widget elementor-widget-wds_rsvp" data-id="dd777dd" data-element_type="widget" data-e-type="widget" data-widget_type="wds_rsvp.default">
-				<div class="elementor-widget-container">
-					<div class="saic-wrapper"><div class="saic-wrapper saic-default saic-border saic-full " style="overflow: hidden;">
+				
+			 
+					
 
-	<div class="saic-wrap-link">
 
-		<a href="?post_id=4716&#038;comments=3&#038;get=500&#038;order=DESC" id="saic-link-4716" class="saic-link saic-icon-link saic-icon-link-true auto-load-true">
-			<i class="saico-comment"></i>
-			<span>3</span>
-			Ucapan		</a>
+  
+  
+  <style>
+.wishes-container {max-width:700px; margin:20px auto; padding:20px; font-family:'Poppins',sans-serif; background: transparent;}
 
-	</div>
+.wishes-container h2 {text-align:center; color:#C8A27A; font-size:38px; font-family:'Dancing Script',cursive; margin-bottom:5px;}
+.wishes-container p {text-align:center; margin-bottom:20px; font-size:16px;}
 
-	<div id="saic-wrap-comment-4716" class="saic-wrap-comments" style="display: none;" data-id="4716">
+.wishes-form input, 
+.wishes-form textarea, 
+.wishes-form select {
+  width:100%; 
+  padding:12px; 
+  margin:8px 0; 
+  border:1px solid rgba(200,162,122,0.4); 
+  border-radius:12px; 
+  font-size:14px;
+  background: rgba(255,255,255,0.85) !important; /* Putih transparan */
+  backdrop-filter: blur(10px); /* Efek kaca */
+  -webkit-backdrop-filter: blur(10px); /* Buat iPhone */
+}
 
-		<div id="saic-wrap-form-4716" class="saic-wrap-form saic-clearfix">
+.wishes-form button {
+  background: rgba(200,162,122,0.9); 
+  color:white; 
+  border:none; 
+  padding:14px 20px; 
+  border-radius:12px; 
+  cursor:pointer; 
+  width:100%; 
+  font-weight:bold;
+  margin-top:10px;
+}
+.wishes-form button:hover {background: rgba(184,140,100,0.9);}
 
-			<div id="saic-container-form-4716" class="saic-container-form">
+.wish-card {
+  background: rgba(255,255,255,0.75); /* Card transparan */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-left:4px solid #C8A27A; 
+  padding:15px; 
+  margin:15px 0; 
+  border-radius:12px; 
+  box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+.wish-name {font-weight:bold; color:#C8A27A;}
+.wish-text {margin:8px 0; font-style:italic;}
+.wish-kehadiran {font-size:12px; color:#555;}
 
-				<div id="respond-4716" class="respond saic-clearfix">
+#wishesList h3 {text-align:center; color:#C8A27A; margin:20px 0 10px 0;}
+</style>
 
-					<form action="" method="POST" id="commentform-4716">
+<div class="wishes-container">
+  <h2>Wishes</h2>
+  <p>Ucapan Selamat & Do'a</p>
 
-						<p class="comment-form-author saic-field-1">
-							<input type="text" name="author" id="author" class="saic-input" aria-required="true" placeholder="Nama Anda" value="Tamu Undangan" />
-							<span class="saic-required">*</span>
-							<span class="saic-error-info saic-error-info-name">Masukan nama anda</span>
-						</p>
-
-						
-							<div class="saic-wrap-attendance">
-								<select name="attendance" id="attendance" class="saic-select">
-									<option value="" selected="" disabled>Konfirmasi Kehadiran</option>
-									<option value="present">Hadir</option>
-									<option value="notpresent">Tidak Hadir</option>
-																			<option value="notsure">Masih Ragu</option>
-																	</select>
-								<span class="saic-required">*</span>
-								<span class="saic-error-info saic-error-info-attendance">Pilih konfirmasi kehadiran</span>
-							</div>
-
-						
-						<div class="saic-wrap-guest" style="display: none;">
-							<select name="guest" id="guest" class="saic-select">
-								<option value="" selected="" disabled>Jumlah Tamu</option>
-								<option value="1">1 orang</option><option value="2">2 orang</option><option value="3">3 orang</option><option value="4">4 orang</option><option value="5">5 orang</option><option value="6">6 orang</option><option value="7">7 orang</option><option value="8">8 orang</option><option value="9">9 orang</option><option value="10">10 orang</option>							</select>
-							<span class="saic-required">*</span>
-							<span class="saic-error-info saic-error-info-guest">Pilih jumlah tamu</span>
-						</div>
-
-						<div class="saic-wrap-textarea">
-							<textarea name="comment" id="saic-textarea-4716" class="waci_comment saic-textarea autosize-textarea" aria-required="true" placeholder="Tulis ucapan" rows="1"></textarea>
-							<span class="saic-required">*</span>
-							<span class="saic-error-info saic-error-info-text">Ucapan minimal 2 karakter</span>
-						</div>
-
-						<div class="saic-wrap-submit saic-clearfix">
-							<p class="form-submit">
-                                <input type='hidden' name='comment_post_ID' value='4716' id='comment_post_ID' />
-<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
-								<input type="hidden" name="commentpress" value="true" />
-								<input type="submit" id="submit-4716" value="Kirim" />
-							</p>
-						</div>
-
-					</form>
-
-				</div>
-
-			</div>
-
-		</div>
-
-		<div id="saic-comment-status-4716" class="saic-comment-status"></div>
-
-		<ul id="saic-container-comment-4716" class="saic-container-comments saic-order-DESC saic-has-3-comments saic-multiple-comments" data-order="DESC"></ul>
-
-		<div class="saic-holder-4716 saic-holder"></div>
-
-	</div>
-
+  <form id="wishesForm" class="wishes-form">
+      <input type="text" name="nama" placeholder="Nama Anda" required>
+      <select name="kehadiran" required>
+        <option value="">Konfirmasi Kehadiran</option>
+        <option value="Hadir">Hadir</option>
+        <option value="Tidak Hadir">Tidak Hadir</option>
+      </select>
+      <textarea name="ucapan" placeholder="Tulis ucapan & doa terbaikmu..." rows="4" required></textarea>
+      <button type="submit">Kirim Ucapan</button>
+    </form>
+    
+    <div id="wishesList"></div>
 </div>
-</div>				</div>
-				</div>
-				</div>
-				</article>
+
+<script>
+const scriptURL = 'https://script.google.com/macros/s/AKfycbySDEsW3gtJ-aIYpHULsHFoJ7Riy5a07FcnFufMb_Ds6BgqwCat873I9pSBppdLbj5HA/exec'
+
+// Kirim data ke Google Sheet
+document.getElementById('wishesForm').addEventListener('submit', e => {
+  e.preventDefault();
+  fetch(scriptURL, { method: 'POST', body: new FormData(e.target) })
+    .then(response => {
+      alert('Terima kasih atas ucapan & doanya!');
+      e.target.reset();
+      loadWishes();
+    })
+    .catch(error => alert('Gagal mengirim'));
+});
+
+// Ambil data dari Google Sheet
+function loadWishes() {
+  fetch(scriptURL + '?action=get')
+    .then(res => res.json())
+    .then(data => {
+      const list = document.getElementById('wishesList');
+      if(data.length > 0){
+        list.innerHTML = `<h3>💬 ${data.length} Ucapan</h3>` + data.reverse().map(item => `
+          <div class="wish-card">
+            <div class="wish-name">${item.nama}</div>
+            <div class="wish-kehadiran">${item.kehadiran} - ${new Date(item.waktu).toLocaleDateString('id-ID')}</div>
+            <div class="wish-text">"${item.ucapan}"</div>
+          </div>
+        `).join('');
+      }
+    });
+}
+
+loadWishes();
+</script>
 		<article class="elementor-element elementor-element-50798f7 e-con-full e-flex e-con e-child" data-id="50798f7" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 				</article>
 		<article class="elementor-element elementor-element-660b8fbf e-con-full e-flex e-con e-child" data-id="660b8fbf" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
