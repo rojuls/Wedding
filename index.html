@@ -785,114 +785,157 @@ var WdsAudio = {"source":"url","audio_link":"https:\/\/walimatul.id\/wp-content\
 				</div>
 				
 			 
-					
+		
 
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 
-  
-  
-  <style>
-.wishes-container {max-width:700px; margin:20px auto; padding:20px; font-family:'Poppins',sans-serif; background: transparent;}
+.wishes-container {max-width:650px; margin:20px auto; padding:0; font-family:'Poppins',sans-serif; background: transparent; text-align:center;}
 
-.wishes-container h2 {text-align:center; color:#C8A27A; font-size:38px; font-family:'Dancing Script',cursive; margin-bottom:5px;}
-.wishes-container p {text-align:center; margin-bottom:20px; font-size:16px;}
+.wishes-container .title-wishes {font-family: 'Dancing Script', cursive; font-size:42px; margin-bottom:5px;}
+.wishes-container .subtitle {font-size:15px; margin-bottom:20px; color:#333;}
+
+/* BOX PUTIH UTAMA */
+.wishes-box {
+  background: #fff; 
+  border-radius: 20px; 
+  padding: 20px; 
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  text-align: left;
+}
+.wishes-header {
+  text-align:center; 
+  color:#B89A6E; 
+  font-weight:600; 
+  padding-bottom:15px; 
+  border-bottom:1px solid #eee;
+  margin-bottom:15px;
+}
 
 .wishes-form input, 
 .wishes-form textarea, 
 .wishes-form select {
   width:100%; 
-  padding:12px; 
+  padding:12px 15px; 
   margin:8px 0; 
-  border:1px solid rgba(200,162,122,0.4); 
-  border-radius:12px; 
+  border:1.5px solid #E5E5E5; /* Border abu muda */
+  border-radius:10px; 
   font-size:14px;
-  background: rgba(255,255,255,0.85) !important; /* Putih transparan */
-  backdrop-filter: blur(10px); /* Efek kaca */
-  -webkit-backdrop-filter: blur(10px); /* Buat iPhone */
+  background: #fff;
+  color:#333;
 }
+.wishes-form input::placeholder, .wishes-form textarea::placeholder { color:#bbb; }
 
 .wishes-form button {
-  background: rgba(200,162,122,0.9); 
+  background: #B89A6E; /* Coklat emas */
   color:white; 
   border:none; 
-  padding:14px 20px; 
-  border-radius:12px; 
+  padding:12px 30px; 
+  border-radius:50px; /* Bulat */
   cursor:pointer; 
-  width:100%; 
   font-weight:bold;
+  font-size:14px;
   margin-top:10px;
+  float:right; /* Tombol ke kanan */
 }
-.wishes-form button:hover {background: rgba(184,140,100,0.9);}
 
+/* LIST UCAPAN */
 .wish-card {
-  background: rgba(255,255,255,0.75); /* Card transparan */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-left:4px solid #C8A27A; 
-  padding:15px; 
-  margin:15px 0; 
-  border-radius:12px; 
-  box-shadow:0 4px 15px rgba(0,0,0,0.08);
+  display:flex;
+  gap:12px;
+  padding:15px 0; 
+  border-bottom:1px solid #f5f5f5; 
 }
-.wish-name {font-weight:bold; color:#C8A27A;}
-.wish-text {margin:8px 0; font-style:italic;}
-.wish-kehadiran {font-size:12px; color:#555;}
-
-#wishesList h3 {text-align:center; color:#C8A27A; margin:20px 0 10px 0;}
+.wish-avatar {
+  width:40px; height:40px; border-radius:50%; 
+  background:#00D4FF; color:#fff; 
+  display:flex; align-items:center; justify-content:center;
+  font-weight:bold; font-size:14px; flex-shrink:0;
+}
+.wish-content {flex:1;}
+.wish-name {font-weight:bold; color:#222; font-size:15px;}
+.wish-name span {color:red; margin-left:5px;} /* Buat ikon ❌ */
+.wish-text {margin:5px 0; font-size:14px; color:#555; line-height:1.6;}
 </style>
 
 <div class="wishes-container">
-  <h2>Wishes</h2>
-  <p>Ucapan Selamat & Do'a</p>
-
-  <form id="wishesForm" class="wishes-form">
+  <div class="title-wishes">Wishes</div>
+  <div class="subtitle">Ucapan Selamat & Do'a</div>
+  
+  <div class="wishes-box">
+    <div class="wishes-header">💬 <span id="jumlahUcapan">0 Ucapan</span></div>
+    
+    <form class="wishes-form">
       <input type="text" name="nama" placeholder="Nama Anda" required>
       <select name="kehadiran" required>
-        <option value="">Konfirmasi Kehadiran</option>
+        <option value="" disabled selected>Konfirmasi Kehadiran</option>
         <option value="Hadir">Hadir</option>
         <option value="Tidak Hadir">Tidak Hadir</option>
       </select>
-      <textarea name="ucapan" placeholder="Tulis ucapan & doa terbaikmu..." rows="4" required></textarea>
-      <button type="submit">Kirim Ucapan</button>
+      <textarea name="ucapan" placeholder="Tulis ucapan" rows="3" required></textarea>
+      <button type="submit">Kirim</button>
+      <div style="clear:both;"></div>
     </form>
-    
-    <div id="wishesList"></div>
+  </div>
+
+  <div id="wishesList" style="margin-top:0;"></div>
+  <p id="notif" style="text-align:center; margin-top:10px;"></p>
 </div>
 
 <script>
-const scriptURL = 'https://script.google.com/macros/s/AKfycbySDEsW3gtJ-aIYpHULsHFoJ7Riy5a07FcnFufMb_Ds6BgqwCat873I9pSBppdLbj5HA/exec'
+const scriptURL = 'https://sheetdb.io/api/v1/wt3zbip8w16cz'
+const form = document.querySelector('.wishes-form')
+const list = document.getElementById('wishesList')
+const notif = document.getElementById('notif')
+const jumlah = document.getElementById('jumlahUcapan')
 
-// Kirim data ke Google Sheet
-document.getElementById('wishesForm').addEventListener('submit', e => {
-  e.preventDefault();
-  fetch(scriptURL, { method: 'POST', body: new FormData(e.target) })
-    .then(response => {
-      alert('Terima kasih atas ucapan & doanya!');
-      e.target.reset();
-      loadWishes();
-    })
-    .catch(error => alert('Gagal mengirim'));
-});
-
-// Ambil data dari Google Sheet
-function loadWishes() {
-  fetch(scriptURL + '?action=get')
-    .then(res => res.json())
-    .then(data => {
-      const list = document.getElementById('wishesList');
-      if(data.length > 0){
-        list.innerHTML = `<h3>💬 ${data.length} Ucapan</h3>` + data.reverse().map(item => `
-          <div class="wish-card">
-            <div class="wish-name">${item.nama}</div>
-            <div class="wish-kehadiran">${item.kehadiran} - ${new Date(item.waktu).toLocaleDateString('id-ID')}</div>
-            <div class="wish-text">"${item.ucapan}"</div>
+// LOAD UCAPAN
+fetch(scriptURL)
+  .then(res => res.json())
+  .then(data => {
+    jumlah.innerText = data.length + ' Ucapan'
+    data.reverse().forEach(item => {
+      if(item.nama) {
+        let inisial = item.nama.substring(0,2).toUpperCase()
+        list.innerHTML += `
+          <div class="wishes-box" style="margin-top:10px; padding:0 20px;">
+            <div class="wish-card">
+              <div class="wish-avatar">${inisial}</div>
+              <div class="wish-content">
+                <div class="wish-name">${item.nama} <span>❌</span></div>
+                <div class="wish-text">${item.ucapan}</div>
+                <small style="color:#999;">${item.kehadiran} - ${item.waktu}</small>
+              </div>
+            </div>
           </div>
-        `).join('');
+        `
       }
-    });
-}
+    })
+  })
 
-loadWishes();
+// KIRIM UCAPAN
+form.addEventListener('submit', e => {
+  e.preventDefault()
+  notif.innerText = "Mengirim..."
+  let formData = new FormData(form)
+  formData.append('waktu', new Date().toLocaleString('id-ID'))
+
+  fetch(scriptURL, { method: 'POST', body: formData })
+    .then(res => res.json())
+    .then(() => {
+      notif.innerText = "Ucapan terkirim!"
+      form.reset()
+      setTimeout(() => location.reload(), 1200)
+    })
+    .catch(() => notif.innerText = "Gagal mengirim")
+})
 </script>
+
+
+  
+  
+ 
+
 		<article class="elementor-element elementor-element-50798f7 e-con-full e-flex e-con e-child" data-id="50798f7" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 				</article>
 		<article class="elementor-element elementor-element-660b8fbf e-con-full e-flex e-con e-child" data-id="660b8fbf" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
