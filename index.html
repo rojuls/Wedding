@@ -1237,14 +1237,26 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
 //# sourceURL=https://walimatul.id/wp-includes/js/wp-emoji-loader.min.js
 </script>
 <script>
-// kunci scroll pas awal
-document.body.classList.add('lock-scroll');
+// Kunci scroll pas awal buka
+document.body.style.overflow = 'hidden';
 
 function bukaUndangan() {
-  document.getElementById('cover').classList.add('hide');
-  document.body.classList.remove('lock-scroll');
+  const cover = document.getElementById('cover');
   
-  // scroll ke section #open
+  // Kasih efek naik + fade out
+  cover.style.transition = 'transform 1s ease, opacity 1s ease';
+  cover.style.transform = 'translateY(-100%)';
+  cover.style.opacity = '0';
+  
+  // Setelah animasi selesai 1 detik, hapus cover dari halaman
+  setTimeout(() => {
+    cover.remove(); 
+  }, 1000);
+
+  // Buka kunci scroll
+  document.body.style.overflow = 'auto';
+  
+  // Auto scroll ke bagian #open
   document.querySelector('#open').scrollIntoView({behavior: 'smooth'});
 }
 </script>
